@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Hamooody 💌</title>
+<style>
+:root{--navy:#17152b;--cream:#fff5e8;--paper:#fffaf2;--red:#a9253b;--ink:#332b35}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;background:radial-gradient(circle at top,#302443 0,#17152b 58%,#10101d 100%);color:#fff;font-family:Georgia,"Times New Roman",serif;padding:28px 16px 50px}
+header{text-align:center;margin:10px auto 30px}
+h1{font-size:clamp(27px,6vw,42px);margin:0 0 9px;color:#ffe8df;letter-spacing:.4px}
+header p{font-family:Arial,sans-serif;color:#d8c9d7;margin:0;font-size:15px}
+.grid{width:min(920px,100%);margin:auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:25px}
+.envelope-card{display:flex;flex-direction:column;align-items:center;gap:12px}
+.envelope{position:relative;width:min(100%,280px);height:180px;border:0;padding:0;background:transparent;cursor:pointer;perspective:900px;filter:drop-shadow(0 12px 16px #0006);-webkit-tap-highlight-color:transparent}
+.env-back{position:absolute;inset:0;background:#e9d6bd;border-radius:7px}
+.env-front{position:absolute;inset:0;background:linear-gradient(145deg,#f8ead7,#e6ceb2);clip-path:polygon(0 0,50% 57%,100% 0,100% 100%,0 100%);border-radius:7px}
+.env-flap{position:absolute;inset:0 0 auto;height:65%;background:#f5e5d0;clip-path:polygon(0 0,100% 0,50% 100%);transform-origin:top;transition:transform .65s ease;z-index:3;backface-visibility:hidden}
+.seal{position:absolute;z-index:4;left:50%;top:54%;transform:translate(-50%,-50%);width:43px;height:43px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#d75b68,#9d1e36 70%);display:grid;place-items:center;color:#ffe7e2;font-size:23px;box-shadow:0 3px 7px #5d1728aa;transition:opacity .25s}
+.envelope.open .env-flap{transform:rotateX(180deg)}
+.envelope.open .seal{opacity:0}
+.env-label{font:600 15px Arial,sans-serif;color:#fff0e7;text-align:center;max-width:260px}
+.letter{display:none;width:min(100%,720px);margin:24px auto 0;background:var(--paper);color:var(--ink);border-radius:9px;padding:clamp(20px,5vw,38px);box-shadow:0 18px 45px #0008;line-height:1.85;white-space:pre-wrap;font-family:Arial,sans-serif;font-size:16px;overflow-wrap:anywhere;text-align:right}
+.letter.show{display:block;animation:rise .45s ease both}
+.letter h2{font: bold 20px Georgia,serif;color:#8f263d;text-align:center;margin:0 0 18px}
+.letter .body{direction:rtl;unicode-bidi:plaintext}
+.letter .english{direction:ltr;text-align:left}
+.close{display:block;margin:18px auto 0;border:1px solid #a9253b;color:#8f263d;background:transparent;border-radius:22px;padding:8px 20px;font-size:14px;cursor:pointer}
+@keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:480px){.grid{grid-template-columns:1fr 1fr;gap:17px 10px}.envelope{height:135px}.env-label{font-size:13px}.letter{font-size:15px}}
+</style>
+</head>
+<body>
+<header><h1>For my Hamooody 💞</h1><p>Open when you need a little love…</p></header>
+<main class="grid" id="envelopes"></main>
+<section class="letter" id="letter" aria-live="polite"><h2 id="letterTitle"></h2><div class="body" id="letterBody"></div><button class="close" id="closeBtn" type="button">Close letter ✉</button></section>
+<script>
+const letters = [
+{title:"Open when you miss me",dir:"ltr",text:`Dear HAMOOODY 💞,
+
+Here's what I'd do if I were there with you right now:
+Close your eyes for a second. I'm right there, sitting next to you, hugging you and pulling you close, telling you that I love you more than you think.
+You're the most beautiful man I've ever known. I'm so proud of you, and I'm always here for you, forever and ever.
+I love you endlessly, Hamooody. ♾️
+I'm sending you the biggest kiss… you know where. 🫣🤫
+
+Yours, always ❤️‍🔥
+Alp Hamooody`},
+{title:"You had a bad day",dir:"ltr",text:`Dear HAMOOODY 💞,
+
+First of all, I want you to know that I'm very, very proud of you.
+You're the strongest koooty booty I've ever seen. I see your struggles, and I appreciate you more than you know.
+I know this isn't an easy time and that it's full of pressure, but I know you're strong enough to get through it. Everything will get better than before. This will all pass, and we'll get through it together.
+
+Love you, baby. <3
+Alp Hamooody ❤️`},
+{title:"You can't sleep",dir:"rtl",text:`Dear HAMOOODY 💞
+
+أهلاً وسهلاً في عالم الأحلام! هنخلي ده بالعربي بقى علشان لازم يكون بطريقتي يا فندم. احمممم احممم… بسم الله نبدأ 😂
+تخيل كده إن أنا وإنت قاعدين على البحر… تخيلت؟ يا سلام! وده في الشتا كمان! الله! وما إحنا بناكل كشري. تقولي: «إشمعنى كشري؟» هقولك: معرفش، هو لازم آكل كشري على البحر! أكتر حاجتين بحبهم بعدك طبعًا يا قلبي 😂
+وقاعدين بناكل بقى، الله! وطعم الكشري إيه حكاية؟ تخيلت؟ جعان صح؟ وأنا كمان والله! فإيه يا سيدي بقى، كلنا وظبطنا نفسنا، وخدتني من إيدي ووديتني مكان كده أنا مش عارفة حتى في إسكندرية. تخيل بقى إنت ودتني فين؟ رحنا الحتة اللي إحنا مش عارفينها دي، وكانت إيه؟ واااو! فانتستك فور! هااااهااااهااا! بضان صح؟ معلينا 😂
+فإيه يا سيدي، خلصنا اللف وده، وأنا طبعًا مكنتش عايزة أروح كالعادة، فقمت جايبلي آيس كريم وغزل بنات، وكلمتهم، وروحنا على بيتنا. ومكنتش عايزة أطلع برضه، وكنت بجري منك علشان مش عايزة أطلع، فشلتني زي الحرامية وطلعنا على بيتنا.
+وأنا شديتك من شعرك وإنت قعدت تضحك، والحمد لله ربنا كرمنا ودخلنا بيتنا بعد معاناة… قدر ولطف 😂 وغيرنا ونمنا بقى، الحمد لله.
+يلا يا سيدي، أي خدمة! روح نام بقى، يلا. تصبح على خير يا كتكووووتي 💋💋💋
+
+Alp Hamooody ❤️‍🔥`},
+{title:"You need to hear I love you",dir:"rtl",text:`Dear HAMOOODY💞
+
+انا عندي سر وعايزه اقولك عليه بس لازم توعدني انك مش هتقول لحد هااااا مستنيه......... ماشي. انا بطلت اشوفك ك محمد صاحب اخويا من عيد میلاد محمد كنت دائما بقعد افكر في الموضوع دا واقول لا مستحيل حاجه زي كدا تحصل لا دا صاحب اخويا كنت بحس اني لما بفكر في حاجه زي كدا اني بعمل حاجه غلطات فا فضل بقي الموضوع دا علي كدا و انت عارف التفاصيل الثاني بس لما كنت بشوفك بحس أن قلبي فيه حاجه غريبه مكنتش فاهمه دا ايه ساعتها حتي لما كنا بنتكلم شات و اکون فاتحه و الاقيك بعتلي مرة واحدة كنت بكون مبسوطه و كل مرة بكون بفكر فيك و الاقيك بعت حتي اقولك علي سر كمان بس اوعي تقول لحد أن ماما في مرة قالتلي هنجوزك محمد مرة واحدة كدا لقيتها بتقولي كدا بتقولي لا يقين علي بعض انا وقتها كنت حاسه اني قلبي وقف قولتها انتي بتقولي ايه واول مرة انفعل علي ماما بالطريقه دي قولتلها دا صاحب محمد دا اخويا انتي بتقولي ايه متتكلميش في الموضوع دا تاني ولا حتي تلمحي هي وقتها فضلت ساكته كدا و قالت ماشي و مفتحتش الموضوع دا نهائي. ولفت الدنيا و كنا من نصيب بعض كنت دائما بحس فيك أن فيك حاجه مميزة فيك حاجه غير و دي حقيقه فعلا مختلف في كل حاجه وان عمري ما حبيت ولا هحب حد قدك و اني مافيش اجمل ولا احلي منك في الدنيا كلها وانك هتفضل دايما احلي اختيار انا خدته في حياتي و احلي عوض ربنا عوضني بيه كنت دائما بقول يارب انا عندي فضول هيبقي عامل ازاي هيبقي احن عليا من نفسي هيخاف عليا هيحبني زي ما انا و طلع احلي مما اتخيل شخص ممكن اتكلم معاه عن أي حاجه بجد و مکونش خايفه و مكسوفه مبقاش قلقانه أنه ممكن في يوم من الايام يعايرني ولا يمسكها عليا ابدا راجل بجد الشخص الوحيد الي قدرت أقوله بعد ندي عن اكثر حاجه حساسه بالنسبالي و مفهمنيش غلط ولا عاتبني ف انا بجد حقيقي ممتنه ليك جدا ولكل حاجه و بحبك يا أغلي حاجه في حياتي كلها ربنا يخلينا لبعض العمر كله يا قلبي يخلينا لبعض العمر كله يا قلبي ويارب اقدر ابينلك قد ايه انا بحبك وانك غالي عليا بووووووسه كبيرة💋💋💋💋
+
+Alp Hamooody❤️‍🔥`}
+];
+const grid=document.getElementById('envelopes');
+const panel=document.getElementById('letter');
+const title=document.getElementById('letterTitle');
+const body=document.getElementById('letterBody');
+letters.forEach((item,index)=>{
+ const card=document.createElement('div');card.className='envelope-card';
+ const btn=document.createElement('button');btn.type='button';btn.className='envelope';btn.setAttribute('aria-label','Open '+item.title);
+ btn.innerHTML='<span class="env-back"></span><span class="env-flap"></span><span class="env-front"></span><span class="seal">♥</span>';
+ const label=document.createElement('div');label.className='env-label';label.textContent=item.title;
+ btn.addEventListener('click',()=>{
+   document.querySelectorAll('.envelope').forEach(e=>e.classList.remove('open'));
+   btn.classList.add('open');
+   title.textContent=item.title;
+   body.className='body '+(item.dir==='ltr'?'english':'');
+   body.textContent=item.text;
+   panel.classList.add('show');
+   panel.scrollIntoView({behavior:'smooth',block:'start'});
+ });
+ card.append(btn,label);grid.append(card);
+});
+document.getElementById('closeBtn').addEventListener('click',()=>{panel.classList.remove('show');document.querySelectorAll('.envelope').forEach(e=>e.classList.remove('open'));});
+</script>
+</body>
+</html>
